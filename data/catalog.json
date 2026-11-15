@@ -1,0 +1,144 @@
+{
+  "store": {
+    "name": "StrikeGear",
+    "currency": "USD",
+    "announcement": "🔥 Free Shipping • 30-Day Guarantee",
+    "support_email": "support@strikegearusa.com",
+    "logo": "images/logo.png",
+    "theme": {
+      "primary": "#ff7a1a",
+      "primary_dark": "#e3650a",
+      "accent": "#ffb347"
+    },
+    "shipping": {
+      "label": "Standard Shipping (7–14 days after dispatch)",
+      "flat_fee_cents": 0,
+      "free_over_cents": 0
+    },
+    "socials": { "tiktok": "", "instagram": "", "youtube": "", "facebook": "" },
+    "videos": [],
+    "reviews": [],
+    "featured_video": null,
+    "reviews_title": "",
+    "shipping_options": [
+      { "id": "standard", "label": "Free Shipping", "eta": "7–14 days after dispatch", "price_cents": 0 }
+    ],
+    "rating": null
+  },
+  "products": [
+    {
+      "handle": "strikegear-display-helmet",
+      "featured": true,
+      "title": "StrikeGear™ Voice-Controlled Display Helmet",
+      "urgency": "LIMITED STOCK • SHIPS WITHIN 24 HOURS",
+      "price_cents": 18999,
+      "compare_at_cents": 28500,
+      "images": [
+        "images/strikegear-1.jpg",
+        "images/strikegear-2.jpg",
+        "images/strikegear-3.jpg",
+        "images/strikegear-4.jpg"
+      ],
+      "highlights": [
+        { "icon": "🎙️", "text": "Voice-controlled motorized mask — say the command and the faceplate opens." },
+        { "icon": "✨", "text": "Glowing orange LED eyes for that full powered-up look." },
+        { "icon": "🖤", "text": "Premium gloss-black finish with a sculpted, sectioned faceplate." }
+      ],
+      "trust": ["🚚 Free shipping", "🔒 Secure checkout"],
+      "options": [],
+      "sold_out": [],
+      "rating": null,
+      "bundles": {
+        "headline": "Choose Your Set",
+        "default": 2,
+        "tiers": [
+          {
+            "id": "solo",
+            "qty": 1,
+            "title": "1 Helmet",
+            "subtitle": "One display helmet",
+            "price_cents": 18999,
+            "compare_at_cents": 28500,
+            "gifts": []
+          },
+          {
+            "id": "duo",
+            "qty": 2,
+            "title": "2 Helmets",
+            "chip": "Save 44%",
+            "subtitle": "One to display, one to gift",
+            "badge": "MOST POPULAR",
+            "price_cents": 31998,
+            "compare_at_cents": 57000,
+            "gifts": []
+          },
+          {
+            "id": "trio",
+            "qty": 3,
+            "title": "3 Helmets",
+            "chip": "Save 47%",
+            "subtitle": "Deck out the whole collection",
+            "badge": "BEST VALUE",
+            "price_cents": 44997,
+            "compare_at_cents": 85500,
+            "gifts": []
+          }
+        ],
+        "addons": [],
+        "gifts": {}
+      },
+      "reviews": [],
+      "tabs": [
+        {
+          "heading": "Details",
+          "html": "<p>The StrikeGear Display Helmet is a premium collectible and costume piece with a motorized faceplate you open on voice command and glowing orange LED eyes. Its gloss-black shell and sculpted, sectioned faceplate make it a standout display item, cosplay accessory, or shelf centerpiece.</p>"
+        },
+        {
+          "heading": "What's Included",
+          "html": "<p><strong>1 × StrikeGear Display Helmet, 1 × USB-C charging cable, 1 × display stand</strong>, plus a printed quick-start guide — all in a premium gift box.</p>"
+        },
+        {
+          "heading": "Good To Know",
+          "html": "<p>This is a <strong>display / costume helmet</strong> designed for collecting, cosplay, and display. It is <strong>not protective safety equipment and is not intended for riding</strong> or any activity requiring a certified helmet.</p>"
+        },
+        {
+          "heading": "Shipping Information",
+          "html": "<p>Most orders ship within <strong>24 hours</strong>, with free shipping on every order. Not happy with it? Return it within 30 days for a full refund.</p>"
+        }
+      ],
+      "description_html": "<p>The StrikeGear Display Helmet brings the powered-up look home — a voice-controlled motorized mask, glowing orange LED eyes, and a premium gloss-black finish. Built as a display and costume piece, not riding gear.</p>",
+      "page": {
+        "infographic": {
+          "title": "It's All In The Details",
+          "image": "images/strikegear-1.jpg",
+          "features": [
+            { "icon": "🎙️", "title": "Voice-Controlled Mask", "text": "Say your wake-word, then “open the mask” or “close the mask” — the motorized faceplate does the rest." },
+            { "icon": "✨", "title": "Orange LED Eyes", "text": "Glowing orange eye strips light up the whole look, day or night." },
+            { "icon": "🖤", "title": "Gloss-Black Finish", "text": "A deep gloss shell with a sculpted, sectioned faceplate and fine detailing throughout." },
+            { "icon": "🔋", "title": "USB-C Rechargeable", "text": "One charge keeps the faceplate motor and LED eyes running — recharges over USB-C." }
+          ]
+        },
+        "cards": {
+          "title": "Next-Level Display Gear",
+          "lead": "A premium collectible that actually does something.",
+          "items": [
+            { "image": "images/strikegear-1.jpg", "chip": "THE HELMET", "title": "Powered-Up Look", "text": "Gloss-black shell, sculpted faceplate, and glowing orange eyes — a true display centerpiece." },
+            { "image": "images/strikegear-2.jpg", "chip": "THE DETAILS", "title": "Built Down To The Detail", "text": "Clean paneling, sectioned faceplate, and fine accents that hold up close-up." },
+            { "image": "images/strikegear-3.jpg", "chip": "THE BOX", "title": "Premium Gift Box", "text": "Arrives in a premium box — ready to display or give as a gift." }
+          ]
+        },
+        "reviews": [],
+        "faq": null
+      }
+    }
+  ],
+  "faq": [
+    { "q": "How does the voice-controlled mask work?", "a": "A small motor and onboard mic open and close the faceplate on a spoken command. You can also open and close it manually anytime." },
+    { "q": "Is this a real motorcycle helmet?", "a": "No — the StrikeGear helmet is a display and costume piece for collecting, cosplay, and display. It is not protective safety gear and is not intended for riding." },
+    { "q": "How long does the battery last?", "a": "A full USB-C charge keeps the faceplate motor and LED eyes running through plenty of display and dress-up sessions before it needs topping up." },
+    { "q": "Can I still open the faceplate by hand?", "a": "Yes. The voice command is a convenience feature — the faceplate also opens and closes manually at any time." },
+    { "q": "What size is it?", "a": "It's a one-size display helmet with adjustable interior padding, built to fit most adults comfortably for display and costume use." },
+    { "q": "What's your return policy?", "a": "Every order is covered by a 30-day money-back guarantee. If it's not right for you, send it back for a full refund." },
+    { "q": "How fast does it ship?", "a": "Most orders ship within 24 hours, with free shipping across the US." }
+  ]
+}
