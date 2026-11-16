@@ -1,5 +1,5 @@
 /* TacticalTails storefront — no platform, no dependencies.
-   Everything comes from data/catalog.json. Checkout goes through /.netlify/functions/checkout (Square). */
+   Everything comes from data/catalog.json. Checkout hands off to AltCheckout via /api/checkout. */
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -140,9 +140,30 @@
     });
   }
 
-  function checkout() {
-    if (!cartLines().length) return;
-    location.href = 'checkout.html';
+  function sessionRef() {
+    try {
+      let s = localStorage.getItem('tt_session_ref');
+      if (!s) { s = (crypto.randomUUID ? crypto.randomUUID() : 'sess_' + Date.now() + Math.random().toString(36).slice(2)); localStorage.setItem('tt_session_ref', s); }
+      return s;
+    } catch { return 'sess_' + Date.now() + Math.random().toString(36).slice(2); }
+  }
+
+  async function checkout() {
+    const lines = cartLines();
+    if (!lines.length) return;
+    const btn = $('.checkout'); if (!btn) return;
+    const label = btn.textContent; btn.disabled = true; btn.textContent = 'Loading…';
+    const items = lines.map((l) => ({ product_id: l.handle, variant_id: l.tier || null, quantity: l.qty }));
+    try {
+      const r = await fetch('/api/checkout', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_ref: sessionRef(), items }),
+      });
+      const d = await r.json().catch(() => null);
+      if (d && d.url) { location.assign(d.url); return; }
+    } catch {}
+    btn.disabled = false; btn.textContent = label;
+    toast('Checkout is temporarily unavailable, please try again in a moment.');
   }
 
   async function submitForm(e, ok) {

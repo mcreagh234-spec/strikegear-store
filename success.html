@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Order Confirmed — StrikeGear</title>
+<link rel="icon" href="images/favicon.svg">
+<style>
+  :root{--bg:#0a0908;--card:#161412;--text:#f3f2ef;--muted:#9c9690;--accent:#ff7a1a;--line:#2a2724}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;max-width:460px;width:100%;padding:40px 28px;text-align:center}
+  .tick{width:72px;height:72px;border-radius:50%;background:rgba(255,122,26,.12);display:grid;place-items:center;margin:0 auto 20px}
+  .tick svg{width:38px;height:38px;stroke:var(--accent);fill:none;stroke-width:2.4}
+  h1{font-size:1.5rem;margin:0 0 10px}
+  p{color:var(--muted);line-height:1.5;margin:0 0 8px}
+  .ord{display:inline-block;margin:14px 0 24px;padding:8px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--text);font-weight:600;letter-spacing:.04em}
+  a.btn{display:inline-block;background:var(--accent);color:#140d07;text-decoration:none;font-weight:700;padding:14px 28px;border-radius:10px;letter-spacing:.04em}
+</style></head>
+<body>
+  <div class="card">
+    <div class="tick"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5 11-11"/></svg></div>
+    <h1>Order confirmed</h1>
+    <p>Thanks for your order — your payment went through and a confirmation is on its way to your email.</p>
+    <div class="ord" id="ord" hidden></div>
+    <p><a class="btn" href="index.html">Continue shopping</a></p>
+  </div>
+<script>
+  try { localStorage.removeItem('tt_cart_v2'); localStorage.removeItem('tt_session_ref'); } catch (e) {}
+  var m = new URLSearchParams(location.search).get('order');
+  if (m) { var el = document.getElementById('ord'); el.textContent = 'Order ' + m; el.hidden = false; }
+</script>
+</body></html>
