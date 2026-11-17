@@ -1,4 +1,5 @@
 // ShopAdapter for the Strike Beam static store: products from catalog.json, orders/refunds in Netlify Blobs.
+import { createHash } from "node:crypto";
 import { CAT, resolveVariant } from "./catalog.mjs";
 import { siteUrl } from "./config.mjs";
 import { sendOrderConfirmation as sendEmail } from "./email.mjs";
@@ -15,7 +16,9 @@ const refundsStore = () => store("altcheckout-refunds");
 const sessionsStore = () => store("altcheckout-sessions");
 
 const rand = (n) => Math.random().toString(36).slice(2, 2 + n).toUpperCase();
-const newOrderId = () => "SB" + Date.now().toString(36).toUpperCase() + rand(4);
+// Deterministic order id derived from the altcheckout_order_id, so re-sending the same
+// order can never mint a second id — even if two calls race before the first write lands.
+const orderIdFor = (aid) => "SG" + parseInt(createHash("sha256").update(String(aid)).digest("hex").slice(0, 11), 16).toString(36).toUpperCase();
 const orderUrl = (order_id) => siteUrl() + "/success.html?order=" + encodeURIComponent(order_id);
 const toAnswer = (rec) => ({ order_id: rec.order_id, order_number: rec.order_number, order_url: rec.order_url });
 
@@ -88,7 +91,7 @@ export const shop = {
     const orders = await ordersStore();
     const existing = await orders.get(order.altcheckout_order_id, { type: "json" });
     if (existing) return toAnswer(existing);
-    const order_id = newOrderId();
+    const order_id = orderIdFor(order.altcheckout_order_id);
     const rec = {
       order_id, order_number: order_id, order_url: orderUrl(order_id),
       altcheckout_order_id: order.altcheckout_order_id,
