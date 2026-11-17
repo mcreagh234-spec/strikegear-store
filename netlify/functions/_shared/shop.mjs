@@ -9,7 +9,8 @@ import { sendOrderConfirmation as sendEmail } from "./email.mjs";
 let _getStore;
 async function store(name) {
   if (!_getStore) ({ getStore: _getStore } = await import("@netlify/blobs"));
-  return _getStore(name);
+  // Strong consistency so a read always sees the latest write (order_find + idempotency).
+  return _getStore({ name, consistency: "strong" });
 }
 const ordersStore = () => store("altcheckout-orders");
 const refundsStore = () => store("altcheckout-refunds");
