@@ -181,7 +181,28 @@
           ]
         },
         "reviews": [],
-        "faq": null
+        "faq": null,
+        "gallery": {
+          "title": "STRIKEGEAR IN ACTION",
+          "lead": "A closer look at the helmet, on and off.",
+          "items": [
+            {
+              "image": "images/strikegear-action-1.jpg",
+              "title": "Built to turn heads",
+              "text": "Glossy black finish, glowing orange eyes, and a voice-controlled faceplate — a standout piece for any motorcycle enthusiast."
+            },
+            {
+              "image": "images/strikegear-action-2.jpg",
+              "title": "Straight out of a movie",
+              "text": "The futuristic armored design opens and closes on voice command — exactly the look that makes it stand out."
+            },
+            {
+              "image": "images/strikegear-action-3.jpg",
+              "title": "A collector's centerpiece",
+              "text": "Armored styling, orange LED eyes, and a deep black finish — perfect for display, cosplay, and photos."
+            }
+          ]
+        }
       }
     }
   ],

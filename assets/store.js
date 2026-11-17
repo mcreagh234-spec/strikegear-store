@@ -351,6 +351,15 @@
       <div class="pcard-b">${it.chip ? `<span class="pcard-chip">${esc(it.chip)}</span>` : ''}<b>${esc(it.title)}</b><p>${esc(it.text)}</p></div></div>`).join('');
     slider(sec);
   }
+  function renderGallery(sec) {
+    const c = PG?.gallery;
+    if (!c || !c.items?.length) return sec.remove();
+    $('.cards-title', sec).textContent = c.title || '';
+    const lead = $('.cards-lead', sec); if (lead) lead.textContent = c.lead || '';
+    $('.track', sec).innerHTML = c.items.map((it) => `<div class="pcard">${img(it.image, it.title, 'pcard-img')}
+      <div class="pcard-b">${it.chip ? `<span class="pcard-chip">${esc(it.chip)}</span>` : ''}<b>${esc(it.title)}</b><p>${esc(it.text)}</p></div></div>`).join('');
+    slider(sec);
+  }
   function renderFaq(el) {
     el.innerHTML = ((PG && PG.faq) || CAT.faq).map((f) => `<details><summary><i class="ck">${I.check}</i><span>${esc(f.q)}</span><i class="cv">${I.chev}</i></summary><div class="tab-body"><p>${esc(f.a)}</p></div></details>`).join('');
   }
@@ -382,6 +391,7 @@
     $$('[data-designs]').forEach(renderShop);
     $$('[data-infographic]').forEach(renderInfographic);
     $$('[data-cards]').forEach(renderCards);
+    $$('[data-gallery]').forEach(renderGallery);
     $$('[data-featured-video]').forEach(renderFeatured);
     $$('[data-videos]').forEach(renderVideos);
     $$('[data-reviews]').forEach(renderReviews);
