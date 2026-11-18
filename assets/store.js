@@ -56,6 +56,7 @@
     writeCart(c); openDrawer();
     const pr = product(line.handle);
     window.ttPixel?.track('AddToCart', { content_ids: [line.handle], content_type: 'product', content_name: pr?.title, value: linePrice(line) / 100, currency: 'USD', num_items: 1 });
+    track('add_to_cart', { handle: line.handle, name: pr?.title, tier: line.tier || null, value: linePrice(line) / 100, currency: 'USD', qty: 1 });
   }
   const cartLines = () => readCart().filter((l) => product(l.handle) && Array.isArray(l.units));
 
@@ -154,6 +155,7 @@
     const btn = $('.checkout'); if (!btn) return;
     const label = btn.textContent; btn.disabled = true; btn.textContent = 'Loading…';
     const items = lines.map((l) => ({ product_id: l.handle, variant_id: l.tier || null, quantity: l.qty }));
+    track('checkout_started', { value: lines.reduce((s, l) => s + linePrice(l) / 100 * l.qty, 0), currency: 'USD', num_items: lines.reduce((s, l) => s + l.qty, 0), items: items.map((i) => i.product_id) });
     try {
       const r = await fetch('/api/checkout', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -381,13 +383,26 @@
     if (t.accent) r.setProperty('--accent', t.accent);
     if (t.font) r.setProperty('--font', t.font);
   }
+  /* ---------- analytics (PostHog) ---------- */
+  function initAnalytics() {
+    const a = (CAT.store && CAT.store.analytics) || {};
+    const key = a.posthog_key;
+    if (!key || window.__ph) return;
+    window.__ph = 1;
+    const host = a.posthog_host || 'https://us.i.posthog.com';
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    window.posthog.init(key, { api_host: host, defaults: '2025-05-24', capture_pageview: true, autocapture: true });
+  }
+  function track(event, props) { try { window.posthog && window.posthog.capture && window.posthog.capture(event, props || {}); } catch (e) {} }
+
   async function boot() {
     try { CAT = await (await fetch('data/catalog.json', { cache: 'no-cache' })).json(); }
     catch { document.body.insertAdjacentHTML('afterbegin', '<p style="padding:20px">Store data failed to load.</p>'); return; }
     applyTheme();
+    initAnalytics();
     chrome();
     const pe = $('[data-product]');
-    if (pe) { const h = new URLSearchParams(location.search).get('p'); const cur = (h && product(h)) || CAT.products.find((x) => x.featured) || CAT.products[0]; PG = cur.page || null; renderProduct(pe, cur); window.ttPixel?.track('ViewContent', { content_ids: [cur.handle], content_type: 'product', content_name: cur.title, value: cur.price_cents / 100, currency: 'USD' }); }
+    if (pe) { const h = new URLSearchParams(location.search).get('p'); const cur = (h && product(h)) || CAT.products.find((x) => x.featured) || CAT.products[0]; PG = cur.page || null; renderProduct(pe, cur); window.ttPixel?.track('ViewContent', { content_ids: [cur.handle], content_type: 'product', content_name: cur.title, value: cur.price_cents / 100, currency: 'USD' }); track('product_viewed', { handle: cur.handle, name: cur.title, price: cur.price_cents / 100, currency: 'USD' }); }
     $$('[data-designs]').forEach(renderShop);
     $$('[data-infographic]').forEach(renderInfographic);
     $$('[data-cards]').forEach(renderCards);

@@ -33,7 +33,11 @@
         "price_cents": 0
       }
     ],
-    "rating": null
+    "rating": null,
+    "analytics": {
+      "posthog_key": "",
+      "posthog_host": "https://us.i.posthog.com"
+    }
   },
   "products": [
     {
