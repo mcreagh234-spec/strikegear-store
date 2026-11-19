@@ -65,7 +65,7 @@
 
   function chrome() {
     const s = CAT.store;
-    const links = [['index.html', 'Home'], ['shop.html', 'Shop'], ['faq.html', 'FAQ'], ['contact.html', 'Contact']];
+    const links = [['index.html', 'Home'], ['index.html#faq', 'FAQ'], ['policies.html', 'Policies'], ['mailto:' + s.support_email, 'Contact']];
     const here = location.pathname.split('/').pop() || 'index.html';
     const top = document.createElement('div');
     top.innerHTML = `${s.announcement ? `<div class="announce">${esc(s.announcement)}</div>` : ''}
@@ -73,21 +73,19 @@
         <div class="h-left"><button class="icon-btn menu-btn" aria-label="Menu">${I.menu}</button>
           <nav class="nav">${links.map(([h, t]) => `<a href="${h}" class="${here === h ? 'active' : ''}">${t}</a>`).join('')}</nav></div>
         <a href="index.html" class="logo">${s.logo ? `<img src="${esc(s.logo)}" alt="${esc(s.name)}">` : esc(s.name)}</a>
-        <div class="h-right"><button class="icon-btn search-open" aria-label="Search">${I.search}</button>
+        <div class="h-right">
           <button class="icon-btn cart-open" aria-label="Open cart">${I.bag}<span class="bubble" data-n="0">0</span></button></div>
       </div>
-      <form class="searchbar" action="shop.html" role="search"><input name="q" type="search" placeholder="Search" aria-label="Search"><button class="btn auto">Search</button></form>
       </header>`;
     document.body.prepend(...top.children);
     $('.menu-btn').onclick = () => $('.nav').classList.toggle('open');
-    $('.search-open').onclick = () => { $('.searchbar').classList.toggle('open'); $('.searchbar input').focus(); };
 
     const soc = Object.entries(s.socials || {}).filter(([, u]) => u).map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${n[0].toUpperCase() + n.slice(1)}</a>`).join('');
     const f = document.createElement('footer');
     f.className = 'footer';
     f.innerHTML = `${wave('top')}<div class="fwrap"><div class="grid">
         <div><h3>Quick links</h3><ul>
-          <li><a href="shop.html">Search</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html">Home</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="mailto:${esc(s.support_email)}">Contact</a></li>
           <li><a href="policies.html#shipping">Shipping policy</a></li><li><a href="policies.html#returns">Refund policy</a></li>
           <li><a href="policies.html#privacy">Privacy policy</a></li><li><a href="policies.html#terms">Terms of service</a></li></ul>
           ${soc ? `<div class="socials">${soc}</div>` : ''}</div>
