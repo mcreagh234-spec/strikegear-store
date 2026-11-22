@@ -45,8 +45,8 @@
       "featured": true,
       "title": "StrikeGear™ Voice-Controlled Display Helmet",
       "urgency": "LIMITED STOCK • SHIPS WITHIN 24 HOURS",
-      "price_cents": 25500,
-      "compare_at_cents": 38500,
+      "price_cents": 15000,
+      "compare_at_cents": 22500,
       "images": [
         "images/strikegear-1.jpg",
         "images/strikegear-2.jpg",
@@ -83,8 +83,8 @@
             "qty": 1,
             "title": "1 Helmet",
             "subtitle": "One display helmet",
-            "price_cents": 25500,
-            "compare_at_cents": 38500,
+            "price_cents": 15000,
+            "compare_at_cents": 22500,
             "gifts": []
           },
           {
@@ -94,8 +94,8 @@
             "chip": "Save 44%",
             "subtitle": "One to display, one to gift",
             "badge": "MOST POPULAR",
-            "price_cents": 42999,
-            "compare_at_cents": 77000,
+            "price_cents": 25199,
+            "compare_at_cents": 45000,
             "gifts": []
           },
           {
@@ -105,8 +105,8 @@
             "chip": "Save 47%",
             "subtitle": "Deck out the whole collection",
             "badge": "BEST VALUE",
-            "price_cents": 60999,
-            "compare_at_cents": 115500,
+            "price_cents": 35799,
+            "compare_at_cents": 67500,
             "gifts": []
           }
         ],
