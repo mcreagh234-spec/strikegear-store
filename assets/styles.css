@@ -218,7 +218,8 @@ details[open] summary .cv svg{transform:rotate(180deg)}
 .troops .track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 56px)/3);gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:36px}
 .troops .track::-webkit-scrollbar{display:none}
 @media(max-width:860px){.troops .track{grid-auto-columns:100%}}
-.tcard{scroll-snap-align:start;border-radius:20px;overflow:hidden;background:#f3f3f3;display:flex;flex-direction:column}
+.tcard{scroll-snap-align:start;border-radius:20px;overflow:hidden;background:#f3f3f3;display:flex;flex-direction:column;color:#141414}
+.t-body b{color:#141414}
 .t-img{position:relative}
 .t-img img{width:100%;aspect-ratio:1;object-fit:cover}
 .q{position:absolute;right:20px;bottom:-34px;width:68px;height:68px;border-radius:50%;background:var(--olive);color:#fff;display:grid;place-items:center}
