@@ -22,7 +22,26 @@
       "facebook": ""
     },
     "videos": [],
-    "reviews": [],
+    "reviews": [
+      {
+        "image": "images/strikegear-7.jpg",
+        "stars": 5,
+        "text": "Way better than I expected! The glossy black finish and orange LED eyes look incredible. Definitely a head-turner!",
+        "author": "Paul O."
+      },
+      {
+        "image": "images/strikegear-6.jpg",
+        "stars": 5,
+        "text": "Wore it on my weekend ride and got compliments everywhere. The design is absolutely badass!",
+        "author": "Brandon M."
+      },
+      {
+        "image": "images/strikegear-5.jpg",
+        "stars": 5,
+        "text": "Finally found a helmet that stands out from the crowd. Love the futuristic look and those glowing orange eyes!",
+        "author": "James K."
+      }
+    ],
     "featured_video": null,
     "reviews_title": "",
     "shipping_options": [
@@ -76,7 +95,7 @@
       ],
       "options": [],
       "sold_out": [],
-      "rating": null,
+      "rating": { "value": 5.0, "count": 6 },
       "bundles": {
         "headline": "Choose Your Set",
         "default": 2,
@@ -187,7 +206,26 @@
             }
           ]
         },
-        "reviews": [],
+        "reviews": [
+          {
+            "image": "images/strikegear-7.jpg",
+            "stars": 5,
+            "text": "Way better than I expected! The glossy black finish and orange LED eyes look incredible. Definitely a head-turner!",
+            "author": "Paul O."
+          },
+          {
+            "image": "images/strikegear-6.jpg",
+            "stars": 5,
+            "text": "Wore it on my weekend ride and got compliments everywhere. The design is absolutely badass!",
+            "author": "Brandon M."
+          },
+          {
+            "image": "images/strikegear-5.jpg",
+            "stars": 5,
+            "text": "Finally found a helmet that stands out from the crowd. Love the futuristic look and those glowing orange eyes!",
+            "author": "James K."
+          }
+        ],
         "faq": null,
         "gallery": {
           "title": "STRIKEGEAR IN ACTION",
