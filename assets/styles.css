@@ -156,7 +156,8 @@ button,input,select,textarea{font-family:var(--font)}
 .pr-revs .track::-webkit-scrollbar{display:none}
 .pr{flex:0 0 100%;scroll-snap-align:start}
 .pr p{margin:0 0 12px;font-size:1.15rem;line-height:1.5;letter-spacing:.06em}
-.pr-a{border-top:1px solid var(--line);padding-top:10px;color:#888;letter-spacing:.08em;font-size:1.1rem}
+.pr-a{display:flex;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:12px;color:#888;letter-spacing:.08em;font-size:1.1rem}
+.pr-av{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none}
 .stars{color:#ffcc00;letter-spacing:1px}
 
 /* accordions (tabs + FAQ) */

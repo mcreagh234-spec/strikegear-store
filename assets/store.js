@@ -221,7 +221,7 @@
         <button class="btn atc">Add to cart</button>
         ${p.trust?.length ? `<div class="trust">${p.trust.map((t) => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
         ${payBadges()}
-        ${p.reviews?.length ? `<div class="pr-revs"><div class="track">${p.reviews.map((r) => `<div class="pr"><p>"${esc(r.text)}"</p><div class="pr-a">${esc(r.author)} ${stars(r.stars)}</div></div>`).join('')}</div><div class="dots"></div></div>` : ''}
+        ${p.reviews?.length ? `<div class="pr-revs"><div class="track">${p.reviews.map((r) => `<div class="pr"><p>"${esc(r.text)}"</p><div class="pr-a">${r.avatar ? `<img class="pr-av" src="${esc(r.avatar)}" alt="${esc(r.author)}" loading="lazy">` : ''}<span class="pr-na">${esc(r.author)} ${stars(r.stars)}</span></div></div>`).join('')}</div><div class="dots"></div></div>` : ''}
         <div class="tabs">${(p.tabs || []).map((t) => `<details><summary><i class="ck">${I.check}</i><span>${esc(t.heading)}</span><i class="cv">${I.chev}</i></summary><div class="tab-body">${t.html}</div></details>`).join('')}</div>
       </div></div>`;
 
