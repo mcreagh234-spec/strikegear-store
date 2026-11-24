@@ -135,7 +135,23 @@
         "addons": [],
         "gifts": {}
       },
-      "reviews": [],
+      "reviews": [
+        {
+          "text": "The voice commands work flawlessly! Such a cool feature and surprisingly easy to use.",
+          "author": "Ryan T.",
+          "stars": 5
+        },
+        {
+          "text": "Looks badass, sounds great, and the LED eyes are seriously impressive. Best upgrade ever!",
+          "author": "Brandon K.",
+          "stars": 5
+        },
+        {
+          "text": "Everyone notices it when I pull up. The design is incredible and setup was super easy!",
+          "author": "Jake M.",
+          "stars": 5
+        }
+      ],
       "tabs": [
         {
           "heading": "Details",
